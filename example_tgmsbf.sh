@@ -48,8 +48,8 @@ D=${PWD}
 ./wrapper.sh \
   -s "./pdf_to_br.sh" \
   -t "${D}/IABR_template" \
-  -m "python ${D}/../my_fork/PDF-Mine/pdf_metadata.py" \
-  -n "python ${D}/../my_fork/PDF-Mine/pdf_numofpages.py" \
+  -m "python ../../PDF-Mine/pdf_metadata.py" \
+  -n "python ../../PDF-Mine/pdf_numofpages.py" \
   -b "${BOOK_TITLE}" \
   -d "${BOOK_DESCRIPTION}" \
   -i "${PDF_FILE_PATH}" \
