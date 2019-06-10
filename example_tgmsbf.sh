@@ -52,7 +52,7 @@ D=${PWD}
   -n "python ${D}/../my_fork/PDF-Mine/pdf_numofpages.py" \
   -b "${BOOK_TITLE}" \
   -d "${BOOK_DESCRIPTION}" \
-  -i "${D}/${PDF_FILE_PATH}" \
+  -i "${PDF_FILE_PATH}" \
   -o "${PRODUCT_ID}/" \
   -u "http:\/\/www.openbookpublishers.com\/product\/${PRODUCT_ID}\/" \
   -l "http:\/\/www.openbookpublishers.com" \
