@@ -11,6 +11,9 @@
 # FIXME use JPG or PNG for leafs?
 # FIXME check if IABR_TEMPLATE exists and contains the right files
 
+set -eu
+SHOW_CONFIG=false
+
 # Leaf-generation parameters (default values)
 DENSITY=200
 WIDTH=800
