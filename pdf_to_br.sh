@@ -172,15 +172,19 @@ echo -e "\nNumber of pages in the PDF file: ${NUM_PAGES}"
 { echo -e "\nGenerating link metadata: ${LINK_METADATA_FILE}";
   eval ${PDF_METADATA_SCRIPT} ${PDF_FILE_PATH} > ${LINK_METADATA_FILE}; } &
 
-mkdir ${LEAFS_SUBDIR}
-cd ${LEAFS_SUBDIR}
-echo -e "\nGenerating page leafs: ${LEAFS_SUBDIR}/${LEAFS_FILENAME_PREFIX}*"
-# from http://blog.tomayac.com/index.php?date=2013-09-16
-convert -density ${DENSITY} "${PDF_FILE_PATH}" "${LEAFS_FILENAME_PREFIX}".jpg
+generate-leaves () {
+  mkdir ${LEAFS_SUBDIR}
+  cd ${LEAFS_SUBDIR}
+  echo -e "\nGenerating page leafs: ${LEAFS_SUBDIR}/${LEAFS_FILENAME_PREFIX}*"
+  # from http://blog.tomayac.com/index.php?date=2013-09-16
+  convert -density ${DENSITY} "${PDF_FILE_PATH}" "${LEAFS_FILENAME_PREFIX}".jpg
 
-for i in `ls *.jpg`; do convert "$i" -geometry ${GEOMETRY} "$i"; done
+  for i in `ls *.jpg`; do convert "$i" -geometry ${GEOMETRY} "$i"; done
 
-cd ..
+  cd ..
+}
+
+generate-leaves
 
 echo -e "\nInstantiating the IABR template from ${IABR_TEMPLATE}"
 cp -r ${IABR_TEMPLATE}/* .
