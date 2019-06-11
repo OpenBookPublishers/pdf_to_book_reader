@@ -28,13 +28,20 @@ MAIN_FILE=BookReaderJSSimple
 LINK_METADATA_FILE=linkmetadata.json
 
 # The following variables will be picked out of the environment.
-[ -z "${IABR_PARAM_LOGO_URL}" ] && { echo "Need value for IABR_PARAM_LOGO_URL"; exit 1; }
+[ -z "${IABR_PARAM_LOGO_URL}" ] && \
+  { echo "Need value for IABR_PARAM_LOGO_URL"; exit 1; }
+
 #This directory is not specific to this book -- used by the template.
-[ -z "${IABR_PARAM_BOOK_IMG_DIRECTORY}" ] && { echo "Need value for IABR_PARAM_BOOK_IMG_DIRECTORY"; exit 1; }
+[ -z "${IABR_PARAM_BOOK_IMG_DIRECTORY}" ] && \
+  { echo "Need value for IABR_PARAM_BOOK_IMG_DIRECTORY"; exit 1; }
+
 # The URL of the reader instance that is being generated
-[ -z "${IABR_PARAM_OUTPUT_BOOK_BASE_URL}" ] && { echo "Need value for IABR_PARAM_OUTPUT_BOOK_BASE_URL"; exit 1; }
+[ -z "${IABR_PARAM_OUTPUT_BOOK_BASE_URL}" ] && \
+  { echo "Need value for IABR_PARAM_OUTPUT_BOOK_BASE_URL"; exit 1; }
+
 # Where this reader instances files (linkmetadata and images) will be located
-[ -z "${IABR_PARAM_OUTPUT_BOOK_FILES_BASE_URL}" ] && { echo "Need value for IABR_PARAM_OUTPUT_BOOK_FILES_BASE_URL"; exit 1; }
+[ -z "${IABR_PARAM_OUTPUT_BOOK_FILES_BASE_URL}" ] && \
+  { echo "Need value for IABR_PARAM_OUTPUT_BOOK_FILES_BASE_URL"; exit 1; }
 
 # Structure of the target directory
 LEAFS_SUBDIR=page_leafs
