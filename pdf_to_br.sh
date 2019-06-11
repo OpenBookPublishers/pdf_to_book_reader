@@ -176,9 +176,7 @@ mkdir ${LEAFS_SUBDIR}
 cd ${LEAFS_SUBDIR}
 echo -e "\nGenerating page leafs: ${LEAFS_SUBDIR}/${LEAFS_FILENAME_PREFIX}*"
 # from http://blog.tomayac.com/index.php?date=2013-09-16
-#convert -density ${DENSITY} "${PDF_FILE_PATH}" "${PDF_FILE%.pdf}".jpg
 convert -density ${DENSITY} "${PDF_FILE_PATH}" "${LEAFS_FILENAME_PREFIX}".jpg
-#convert -density ${DENSITY} -crop 442x663 "${PDF_FILE_PATH}" "${LEAFS_FILENAME_PREFIX}".jpg
 
 for i in `ls *.jpg`; do convert "$i" -geometry ${GEOMETRY} "$i"; done
 
