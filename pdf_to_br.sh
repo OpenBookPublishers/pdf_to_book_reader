@@ -168,9 +168,10 @@ cd ${TARGET_DIR}
 NUM_PAGES=`${PDF_NUMOFPAGES_SCRIPT} ${PDF_FILE_PATH}`
 echo -e "\nNumber of pages in the PDF file: ${NUM_PAGES}"
 
-# Run this in background
-{ echo -e "\nGenerating link metadata: ${LINK_METADATA_FILE}";
-  eval ${PDF_METADATA_SCRIPT} ${PDF_FILE_PATH} > ${LINK_METADATA_FILE}; } &
+generate-link-metadata () {
+  echo -e "\nGenerating link metadata: ${LINK_METADATA_FILE}";
+  eval ${PDF_METADATA_SCRIPT} ${PDF_FILE_PATH} > ${LINK_METADATA_FILE};
+}
 
 generate-leaves () {
   mkdir ${LEAFS_SUBDIR}
@@ -183,6 +184,9 @@ generate-leaves () {
 
   cd ..
 }
+
+# Run this in background
+{ generate-link-metadata } &
 
 generate-leaves
 
