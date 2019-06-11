@@ -114,9 +114,7 @@ then
   exit 1
 fi
 
-# FIXME put this in a function
-if [ "${SHOW_CONFIG}" = true ]
-then
+show-config () {
   echo -e "\n# Script dependencies"
   echo "PDF_METADATA_SCRIPT=${PDF_METADATA_SCRIPT}"
   echo "PDF_NUMOFPAGES_SCRIPT=${PDF_NUMOFPAGES_SCRIPT}"
@@ -155,7 +153,11 @@ then
   echo "LEAFS_SUBDIR=${LEAFS_SUBDIR}"
   echo "LEAFS_FILENAME_PREFIX=${LEAFS_FILENAME_PREFIX}"
   echo "METADATA_FILENAME=${METADATA_FILENAME}"
+}
 
+if [ "${SHOW_CONFIG}" = true ]
+then
+  show-config
   exit 0;
 fi
 
