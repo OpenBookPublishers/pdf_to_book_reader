@@ -194,8 +194,8 @@ generate-leaves () {
   cd ..
 }
 
-# Run this in background
-{ generate-link-metadata } &
+# Don't run this in background any more
+generate-link-metadata
 
 generate-leaves
 
