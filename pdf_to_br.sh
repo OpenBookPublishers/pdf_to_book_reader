@@ -172,6 +172,7 @@ echo -e "\nCreating target directory: ${TARGET_DIR}"
 mkdir ${TARGET_DIR}
 cd ${TARGET_DIR}
 
+echo -e "\nCounting pages ..."
 NUM_PAGES=`${PDF_NUMOFPAGES_SCRIPT} ${PDF_FILE_PATH}`
 echo -e "\nNumber of pages in the PDF file: ${NUM_PAGES}"
 
