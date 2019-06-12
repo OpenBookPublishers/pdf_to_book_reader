@@ -177,8 +177,8 @@ NUM_PAGES=`${PDF_NUMOFPAGES_SCRIPT} ${PDF_FILE_PATH}`
 echo -e "\nNumber of pages in the PDF file: ${NUM_PAGES}"
 
 generate-link-metadata () {
-  echo -e "\nGenerating link metadata: ${LINK_METADATA_FILE}";
-  eval ${PDF_METADATA_SCRIPT} ${PDF_FILE_PATH} > ${LINK_METADATA_FILE};
+  echo -e "\nGenerating link metadata: ${LINK_METADATA_FILE}"
+  eval ${PDF_METADATA_SCRIPT} ${PDF_FILE_PATH} > ${LINK_METADATA_FILE}
   echo -e "\nLink metadata generation complete."
 }
 
