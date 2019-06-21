@@ -104,8 +104,8 @@ then
 fi
 
 
-PDF_PATH=`dirname ${PDF_FILE_PATH}`
-PDF_FILE=`basename ${PDF_FILE_PATH}`
+PDF_PATH=$(dirname ${PDF_FILE_PATH})
+PDF_FILE=$(basename ${PDF_FILE_PATH})
 
 GEOMETRY=${WIDTH}x${HEIGHT}
 
@@ -173,7 +173,7 @@ mkdir ${TARGET_DIR}
 cd ${TARGET_DIR}
 
 echo -e "\nCounting pages ..."
-NUM_PAGES=`${PDF_NUMOFPAGES_SCRIPT} ${PDF_FILE_PATH}`
+NUM_PAGES=$(${PDF_NUMOFPAGES_SCRIPT} ${PDF_FILE_PATH})
 echo -e "\nNumber of pages in the PDF file: ${NUM_PAGES}"
 
 generate-link-metadata () {
@@ -189,7 +189,7 @@ generate-leaves () {
   # from http://blog.tomayac.com/index.php?date=2013-09-16
   convert -density ${DENSITY} "${PDF_FILE_PATH}" "${LEAFS_FILENAME_PREFIX}".jpg
 
-  for i in `ls *.jpg`; do convert "$i" -geometry ${GEOMETRY} "$i"; done
+  for i in $(ls *.jpg); do convert "$i" -geometry ${GEOMETRY} "$i"; done
 
   cd ..
 }
