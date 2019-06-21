@@ -115,11 +115,11 @@ then
   exit 1
 fi
 
-if [ -d ${TARGET_DIR} ]
-then
-  echo "Target directory already exists"
-  exit 1
-fi
+#if [ -d ${TARGET_DIR} ]
+#then
+#  echo "Target directory already exists"
+#  exit 1
+#fi
 
 show-config () {
   echo -e "\n# Script dependencies"
@@ -169,7 +169,7 @@ then
 fi
 
 echo -e "\nCreating target directory: ${TARGET_DIR}"
-mkdir ${TARGET_DIR}
+mkdir -p ${TARGET_DIR}
 cd ${TARGET_DIR}
 
 echo -e "\nCounting pages ..."
@@ -215,7 +215,7 @@ specify-iabr-details () {
 }
 
 # Don't run this in background any more
-generate-link-metadata
+#generate-link-metadata
 
 generate-leaves
 
