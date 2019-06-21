@@ -194,27 +194,31 @@ generate-leaves () {
   cd ..
 }
 
+specify-iabr-details () {
+  echo -e "\nInstantiating the IABR template from ${IABR_TEMPLATE}"
+  cp -r ${IABR_TEMPLATE}/* .
+
+  perl -pe "s/IABR_PARAM_LOGO_URL/${IABR_PARAM_LOGO_URL}/" ${MAIN_FILE}.template \
+  | perl -pe "s/IABR_PARAM_WIDTH/${WIDTH}/" \
+  | perl -pe "s/IABR_PARAM_HEIGHT/${HEIGHT}/" \
+  | perl -pe "s/IABR_PARAM_NUM_PAGES/${NUM_PAGES}/" \
+  | perl -pe "s/IABR_PARAM_BOOK_TITLE/${BOOK_TITLE}/" \
+  | perl -pe "s/IABR_PARAM_BOOK_URL/${BOOK_URL}/" \
+  | perl -pe "s/IABR_PARAM_BOOK_DESCRIPTION/${BOOK_DESCRIPTION}/" \
+  | perl -pe "s/IABR_PARAM_LEAFS_SUBDIR/${LEAFS_SUBDIR}/" \
+  | perl -pe "s/IABR_PARAM_LEAFS_FILENAME_PREFIX/${LEAFS_FILENAME_PREFIX}/" \
+  | perl -pe "s/IABR_PARAM_METADATA_FILENAME/${METADATA_FILENAME}/" \
+  | perl -pe "s/IABR_PARAM_OUTPUT_BOOK_BASE_URL/${IABR_PARAM_OUTPUT_BOOK_BASE_URL}/" \
+  | perl -pe "s/IABR_PARAM_OUTPUT_BOOK_FILES_BASE_URL/${IABR_PARAM_OUTPUT_BOOK_FILES_BASE_URL}/" \
+  | perl -pe "s/IABR_PARAM_BOOK_IMG_DIRECTORY/${IABR_PARAM_BOOK_IMG_DIRECTORY}/" \
+  > ${MAIN_FILE}.js
+}
+
 # Don't run this in background any more
 generate-link-metadata
 
 generate-leaves
 
-echo -e "\nInstantiating the IABR template from ${IABR_TEMPLATE}"
-cp -r ${IABR_TEMPLATE}/* .
-
-perl -pe "s/IABR_PARAM_LOGO_URL/${IABR_PARAM_LOGO_URL}/" ${MAIN_FILE}.template \
-| perl -pe "s/IABR_PARAM_WIDTH/${WIDTH}/" \
-| perl -pe "s/IABR_PARAM_HEIGHT/${HEIGHT}/" \
-| perl -pe "s/IABR_PARAM_NUM_PAGES/${NUM_PAGES}/" \
-| perl -pe "s/IABR_PARAM_BOOK_TITLE/${BOOK_TITLE}/" \
-| perl -pe "s/IABR_PARAM_BOOK_URL/${BOOK_URL}/" \
-| perl -pe "s/IABR_PARAM_BOOK_DESCRIPTION/${BOOK_DESCRIPTION}/" \
-| perl -pe "s/IABR_PARAM_LEAFS_SUBDIR/${LEAFS_SUBDIR}/" \
-| perl -pe "s/IABR_PARAM_LEAFS_FILENAME_PREFIX/${LEAFS_FILENAME_PREFIX}/" \
-| perl -pe "s/IABR_PARAM_METADATA_FILENAME/${METADATA_FILENAME}/" \
-| perl -pe "s/IABR_PARAM_OUTPUT_BOOK_BASE_URL/${IABR_PARAM_OUTPUT_BOOK_BASE_URL}/" \
-| perl -pe "s/IABR_PARAM_OUTPUT_BOOK_FILES_BASE_URL/${IABR_PARAM_OUTPUT_BOOK_FILES_BASE_URL}/" \
-| perl -pe "s/IABR_PARAM_BOOK_IMG_DIRECTORY/${IABR_PARAM_BOOK_IMG_DIRECTORY}/" \
-> ${MAIN_FILE}.js
+specify-iabr-details
 
 echo -e "\nFinished generating book for ${BOOK_TITLE}"
