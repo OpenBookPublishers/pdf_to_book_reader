@@ -172,18 +172,6 @@ echo -e "\nCounting pages ..."
 NUM_PAGES=$(${PDF_NUMOFPAGES_SCRIPT} ${PDF_FILE_PATH})
 echo -e "\nNumber of pages in the PDF file: ${NUM_PAGES}"
 
-generate-leaves () {
-  mkdir ${LEAFS_SUBDIR}
-  cd ${LEAFS_SUBDIR}
-  echo -e "\nGenerating page leafs: ${LEAFS_SUBDIR}/${LEAFS_FILENAME_PREFIX}*"
-  # from http://blog.tomayac.com/index.php?date=2013-09-16
-  convert -density ${DENSITY} "${PDF_FILE_PATH}" "${LEAFS_FILENAME_PREFIX}".jpg
-
-  for i in $(ls *.jpg); do convert "$i" -geometry ${GEOMETRY} "$i"; done
-
-  cd ..
-}
-
 specify-iabr-details () {
   echo -e "\nInstantiating the IABR template from ${IABR_TEMPLATE}"
   cp -r ${IABR_TEMPLATE}/* .
@@ -203,8 +191,6 @@ specify-iabr-details () {
   | perl -pe "s/IABR_PARAM_BOOK_IMG_DIRECTORY/${IABR_PARAM_BOOK_IMG_DIRECTORY}/" \
   > ${MAIN_FILE}.js
 }
-
-generate-leaves
 
 specify-iabr-details
 
