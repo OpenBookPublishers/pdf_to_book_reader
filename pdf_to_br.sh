@@ -5,7 +5,6 @@
 # This software is distributed under the terms of the AGPLv3 -- see LICENSE.
 #
 # Expects the following to be set in the environment:
-#   PDF_METADATA_SCRIPT
 #   PDF_NUMOFPAGES_SCRIPT
 #
 # FIXME use JPG or PNG for leafs?
@@ -25,7 +24,6 @@ MAIN_FILE=BookReaderJSSimple
 # FIXME could make these into parameters
 #EXTRA_PAGE=true
 #DEFAULT_2PAGE_MODE=true
-LINK_METADATA_FILE=linkmetadata.json
 
 # The following variables will be picked out of the environment.
 [ -z "${IABR_PARAM_LOGO_URL}" ] && \
@@ -91,7 +89,6 @@ shift $(($OPTIND - 1))
 [ "$#" -ne 0 ] && { echo "Unrecognised parameter: $*"; exit 1; }
 
 # PDF metadata scripts
-[ -z "${PDF_METADATA_SCRIPT}" ] && { echo "Need value for PDF_METADATA_SCRIPT"; exit 1; }
 [ -z "${PDF_NUMOFPAGES_SCRIPT}" ] && { echo "Need value for PDF_NUMOFPAGES_SCRIPT"; exit 1; }
 
 [ -z "${IABR_TEMPLATE}" ] && { echo "Need value for IABR_TEMPLATE"; exit 1;}
@@ -123,7 +120,6 @@ fi
 
 show-config () {
   echo -e "\n# Script dependencies"
-  echo "PDF_METADATA_SCRIPT=${PDF_METADATA_SCRIPT}"
   echo "PDF_NUMOFPAGES_SCRIPT=${PDF_NUMOFPAGES_SCRIPT}"
 
   echo -e "\n# PDF file to base the book on"
@@ -176,12 +172,6 @@ echo -e "\nCounting pages ..."
 NUM_PAGES=$(${PDF_NUMOFPAGES_SCRIPT} ${PDF_FILE_PATH})
 echo -e "\nNumber of pages in the PDF file: ${NUM_PAGES}"
 
-generate-link-metadata () {
-  echo -e "\nGenerating link metadata: ${LINK_METADATA_FILE}"
-  eval ${PDF_METADATA_SCRIPT} ${PDF_FILE_PATH} > ${LINK_METADATA_FILE}
-  echo -e "\nLink metadata generation complete."
-}
-
 generate-leaves () {
   mkdir ${LEAFS_SUBDIR}
   cd ${LEAFS_SUBDIR}
@@ -213,9 +203,6 @@ specify-iabr-details () {
   | perl -pe "s/IABR_PARAM_BOOK_IMG_DIRECTORY/${IABR_PARAM_BOOK_IMG_DIRECTORY}/" \
   > ${MAIN_FILE}.js
 }
-
-# Don't run this in background any more
-#generate-link-metadata
 
 generate-leaves
 
