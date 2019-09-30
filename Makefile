@@ -20,3 +20,8 @@ $(PRODUCT_ID)/BookReaderJSSimple.js:
 		-b '$(TITLE)' \
 		-d '$(BLURB)' \
 		-i $(PDF_PATH)
+
+.PHONY: clean
+
+clean:
+	rm -f -- $(PRODUCT_ID)/leaves.stamp
