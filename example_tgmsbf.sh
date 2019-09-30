@@ -54,8 +54,8 @@ D=${PWD}
   -d "${BOOK_DESCRIPTION}" \
   -i "${PDF_FILE_PATH}" \
   -o "${PRODUCT_ID}/" \
-  -u "http:\/\/www.openbookpublishers.com\/product\/${PRODUCT_ID}\/" \
-  -l "http:\/\/www.openbookpublishers.com" \
-  -e "http:\/\/www.openbookpublishers.com\/bookreader\/BookReader\/images\/" \
-  -f "http:\/\/www.openbookpublishers.com\/bookreader\/${PRODUCT_ID}\/" \
-  -r "http:\/\/www.openbookpublishers.com\/reader\/${PRODUCT_ID}"
+  -u "https:\/\/www.openbookpublishers.com\/product\/${PRODUCT_ID}\/" \
+  -l "https:\/\/www.openbookpublishers.com" \
+  -e "https:\/\/www.openbookpublishers.com\/bookreader\/BookReader\/images\/" \
+  -f "https:\/\/www.openbookpublishers.com\/bookreader\/${PRODUCT_ID}\/" \
+  -r "https:\/\/www.openbookpublishers.com\/reader\/${PRODUCT_ID}"
