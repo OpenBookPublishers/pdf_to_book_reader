@@ -8,9 +8,6 @@ all: $(PRODUCT_ID)/leaves.stamp \
   $(PRODUCT_ID)/linkmetadata.json \
   $(PRODUCT_ID)/BookReaderJSSimple.js
 
-$(PRODUCT_ID)/index.txt:
-	cp /etc/passwd $@
-
 $(PRODUCT_ID)/linkmetadata.json:
 	./generate_link_metadata.sh $(PDF_PATH) $(PRODUCT_ID)
 
