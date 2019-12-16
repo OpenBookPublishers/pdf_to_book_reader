@@ -8,7 +8,7 @@ prod_id=$2
 cd output/$prod_id
 
 LINK_METADATA_FILE=linkmetadata.json
-PDF_METADATA_SCRIPT="python ../../PDF-Mine/pdf_metadata.py"
+PDF_METADATA_SCRIPT="python ../../../PDF-Mine/pdf_metadata.py"
 
 echo -e "\nGenerating link metadata: ${LINK_METADATA_FILE}"
 TMP=$(tempfile)
