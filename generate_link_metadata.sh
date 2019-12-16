@@ -5,7 +5,7 @@ set -eu
 PDF_FILE_PATH=$1
 prod_id=$2
 
-cd $prod_id
+cd output/$prod_id
 
 LINK_METADATA_FILE=linkmetadata.json
 PDF_METADATA_SCRIPT="python ../../PDF-Mine/pdf_metadata.py"

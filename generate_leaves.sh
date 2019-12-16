@@ -5,7 +5,7 @@ set -eu
 PDF_FILE_PATH=$1
 prod_id=$2
 
-cd $prod_id
+cd output/$prod_id
 
 # Structure of the target directory
 LEAFS_SUBDIR=page_leafs
